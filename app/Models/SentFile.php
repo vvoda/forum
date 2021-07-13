@@ -10,7 +10,7 @@ class SentFile extends Model {
         return $this->belongsTo(File::class, 'file_id', 'id');
     }
 
-    public function reveiver() {
+    public function receiver() {
         return $this->belongsTo(User::class, 'receiver_id', 'id');
     }
 

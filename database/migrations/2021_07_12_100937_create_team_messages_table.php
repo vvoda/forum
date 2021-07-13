@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupMessagesTable extends Migration
+class CreateTeamMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateGroupMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_messages', function (Blueprint $table) {
+        Schema::create('team_messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('group_id');
+            $table->foreignId('team_id');
             $table->longText('message');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateGroupMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_messages');
+        Schema::dropIfExists('team_messages');
     }
 }
