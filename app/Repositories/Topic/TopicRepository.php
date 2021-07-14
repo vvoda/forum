@@ -6,7 +6,6 @@ use App\Models\Team;
 use App\Models\Topic;
 use App\Models\TopicFile;
 use Carbon\Carbon;
-// use Illuminate\Support\Facades\DB;
 
 class TopicRepository implements TopicRepositoryInterface {
     
@@ -76,12 +75,24 @@ class TopicRepository implements TopicRepositoryInterface {
         return true;
     }
 
-    public function deleteFile($topic, $file_id) {
-        $topic = $this->topic->find($topic);
-        $topic_file = $this->topic_file->where('topic_id', $topic)->where('file_id', $file_id)->first();
+    public function createTopicFile($file_id, $topic_id) {
+        $topicFile = new TopicFile();
+        $topicFile->file_id = $file_id;
+        $topicFile->topic_id = $topic_id;
+
+        $topicFile->save();
+        
+    }
+
+    public function deleteTopicFile($file_id, $topic_id) {
+        $topic_file = $this->topic_file->where('file_id', $file_id)->where('topic_id', $topic_id)->first();
+        if (!$topic_file) {
+            return false;
+        }
+
         $topic_file->file->delete();
         $topic_file->delete();
-
+        
         return true;
     }
 

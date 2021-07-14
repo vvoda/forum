@@ -22,4 +22,8 @@ class Topic extends Model {
         return $this->hasMany(TeamMessage::class, 'topic_id', 'id');
     }
 
+    public function files() {
+        return $this->hasMany(TopicFile::class, 'topic_id', 'id');
+    }
+
 }

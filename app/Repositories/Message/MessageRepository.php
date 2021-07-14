@@ -14,6 +14,14 @@ class MessageRepository implements MessageRepositoryInterface {
         $this->tm = $tm;
     }
 
+    public function getPrivateMessage($id) {
+        return $this->pm->find($id);
+    }
+
+    public function getTeamMessage($id) {
+        return $this->tm->find($id);
+    }
+
     public function addPrivateMessage($sender, $receiver, $message) {
         $message = new PrivateMessage();
 
@@ -37,6 +45,36 @@ class MessageRepository implements MessageRepositoryInterface {
         $message->save();
 
         return $message();
+    }
+
+    public function deletePrivateMessage($id) {
+        $message = $this->pm->find($id);
+        $message->delete();
+
+        return true;
+    }
+
+    public function deleteTeamMessage($id) {
+        $message = $this->tm->find($id);
+        $message->delete();
+
+        return true;
+    }
+
+    public function unsendPrivateMessage($id) {
+        $message = $this->getPrivateMessage($id);
+        $message->message = 'This message was removed.';
+        $message->save();
+
+        return $message;
+    }
+
+    public function unsendTeamMessage($id) {
+        $message = $this->getTeamMessage($id);
+        $message->message = 'This message was removed.';
+        $message->save();
+
+        return $message;
     }
     
 }

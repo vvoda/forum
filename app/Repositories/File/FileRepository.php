@@ -3,14 +3,16 @@
 namespace App\Repositories\File;
 
 use App\Models\File;
+use App\Models\TopicFile;
 use Illuminate\Support\Facades\Storage;
 
 class FileRepository implements FileRepositoryInterface {
     
-    protected $file;
+    protected $file, $topic_file;
     
-    public function __construct(File $file) {
+    public function __construct(File $file, TopicFile $topic_file) {
         $this->file = $file;
+        $this->topic_file = $topic_file;
     }
     
     public function getByFilename($filename) {
@@ -23,6 +25,7 @@ class FileRepository implements FileRepositoryInterface {
         $fileSize = $fileObj->getClientSize();
     
         $file = new File;
+        $file->user_id = request()->session()->user->id;
         $file->filename = $filename;
         $file->original_filename = $originalFilename;
         $file->filesize = $fileSize;
