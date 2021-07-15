@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TeamTopic extends Model {
 
+    protected $fillable = [
+        'team_id', 'topic_id'
+    ];
+
     public function topic() {
         return $this->belongsTo(Topic::class);
     }

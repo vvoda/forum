@@ -17,4 +17,8 @@ class TopicConversation extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function file(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        return $this->belongsTo(File::class);
+    }
 }

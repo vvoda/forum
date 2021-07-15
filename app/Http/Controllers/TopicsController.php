@@ -25,8 +25,16 @@ class TopicsController extends Controller {
         return Inertia::render('Topics', $topics);
     }
 
-    public function createTopic(Request $request) {
+    public function store(Request $request) {
         return $this->topic->createTopic($request);
+    }
+
+    public function storeTopicConversation(Request $request): \Inertia\Response {
+        return $this->topic->storeTopicConversation($request);
+    }
+
+    public function storeTopicFileConversation(Request $request): \Inertia\Response {
+        return $this->topic->storeTopicFileConversation($request);
     }
 
     public function addTopicFile(Request $request) { //tested, works
@@ -54,7 +62,7 @@ class TopicsController extends Controller {
     }
 
     public function sendTeamMessage(Request $request) {
-        return $this->message->addTeamMessage($request->user()->id, $request->team_id, $request->topic_id, $request->message);
+        return $this->message->addTopicConversation($request->user()->id, $request->team_id, $request->topic_id, $request->message);
     }
 
     public function getTopicFiles(Request $request) {

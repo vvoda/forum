@@ -4,18 +4,22 @@ namespace App\Repositories\Topic;
 
 use App\Models\Team;
 use App\Models\Topic;
+use App\Models\TopicConversation;
 use App\Models\TopicFile;
+use App\Repositories\File\FileRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 
 class TopicRepository implements TopicRepositoryInterface {
     
-    protected $topic, $team, $topic_file;
+    protected $topic, $team, $topic_file, $fileRepository;
 
     public function __construct(Topic $topic, Team $team, TopicFile $topic_file) {
         $this->topic = $topic;
         $this->team = $team;
         $this->topic_file = $topic_file;
+        $this->fileRepository = app()->make(FileRepositoryInterface::class);
     }
 
     public function getTopic($id) {
@@ -27,26 +31,73 @@ class TopicRepository implements TopicRepositoryInterface {
     }
 
     public function createTopic($request) {
-        $validation = $request->validate([
-            'title' => 'required|max:255'
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'string',
+            'team_id' => 'required|integer'
         ]);
 
-        if(!$validation) {
-            return false;
-        }
-
-        if(count($this->topic->where('title', $request->title)->get())) {
+        if(count($this->topic->where('title', $request->title)->where('team_id', $request->team_id)->get())) {
             return response()->json(['error' => 'Topic already exists.']);
         }
 
         $topic = new Topic();
-        $topic->user_id = $request->user_id;
+        $topic->title = $request->title;
         $topic->team_id = $request->team_id;
-        $topic->title = $request->title; 
-        $topic->description = ($request->description) ?? '';
+        $topic->user_id = $request->user()->id;
+        if (isset($request->description)) {
+            $topic->description = $request->description;
+        }
         $topic->save();
 
-        return $topic;
+        return Inertia::render('Home', [
+            'currentTopics' => Topic::where('team_id', $request->team_id)->with('createdBy')->orderBy('created_at', 'DESC')->get(),
+            'rightSide' => 'groups'
+        ]);
+    }
+
+    public function storeTopicConversation($request) {
+        $request->validate([
+            'message' => 'required|string',
+            'topicId' => 'required|integer'
+        ]);
+ 
+         $message = new TopicConversation();
+         $message->message = $request->message;
+         $message->topic_id = $request->topicId;
+         $message->user_id = $request->user()->id;
+         $message->team_id = $request->user()->current_team_id;
+         $message->save();
+
+         return Inertia::render('Home', [
+             'currentTopicConversations' => TopicConversation::where([
+                 ['team_id', $request->user()->current_team_id],
+                 ['topic_id', $request->topicId]
+             ])->with('file')->with('createdBy')->orderBy('created_at', 'ASC')->get(),
+             'middleSection' => $request->topicId ? 'topic-conversations' : 'topics',
+         ]);
+    }
+
+    public function storeTopicFileConversation($request) {
+        $file = $this->fileRepository->upload($request->file('file'));
+        if(!$file) {
+            return response()->json(['error' => 'File could not be uploaded'], 500);
+        }
+        $message = new TopicConversation();
+        $message->user_id = $request->user()->id;
+        $message->team_id = $request->user()->current_team_id;
+        $message->topic_id = $request->topicId;
+        $message->file_id = $file->id;
+        $message->message = '';
+        $message->save();
+
+        return Inertia::render('Home', [
+            'currentTopicConversations' => TopicConversation::where([
+                ['team_id', $request->user()->current_team_id],
+                ['topic_id', $request->topicId]
+            ])->with('file')->with('createdBy')->orderBy('created_at', 'ASC')->get(),
+            'middleSection' => $request->topicId ? 'topic-conversations' : 'topics',
+        ]);
     }
 
     public function updateTopic($request) {

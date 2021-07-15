@@ -31,16 +31,6 @@ class UsersController extends Controller {
         
     }
 
-    public function sendTeamMessage(Request $request) {
-        $validation = $this->request->validate(['message' => 'required']);
-
-        if ($validation) {
-            return $this->message->addTeamMessage($request->user()->id, $request->team_id, $request->topic_id, $request->message);
-        } else {
-            return response()->json(['error' => 'Message could not be sent.'], 500);
-        }
-    }
-
     public function unsendPrivateMessage($message_id) {
         return $this->message->unsendPrivateMessage($message_id);
     }

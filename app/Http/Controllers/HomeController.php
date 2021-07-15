@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\Topic;
 use App\Models\User;
+use App\Repositories\File\FileRepositoryInterface;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
-class HomeController extends Controller
-{
-    public function index(Request $request): \Inertia\Response
-    {
+class HomeController extends Controller {
+
+    protected $file;
+
+    public function __construct() {
+        $this->file = app()->make(FileRepositoryInterface::class);
+    }
+
+    public function index(Request $request): \Inertia\Response {
         $result = [];
         $response = [];
         $findUsers = [];
@@ -27,7 +35,7 @@ class HomeController extends Controller
             $response = TopicConversation::where([
                 ['team_id', $request->user()->current_team_id],
                 ['topic_id', $request->topicId]
-            ])->with('createdBy')->orderBy('created_at', 'ASC')->get();
+            ])->with('file')->with('createdBy')->orderBy('created_at', 'ASC')->get();
         }
 
         if (isset($request->fu)) {
@@ -45,4 +53,18 @@ class HomeController extends Controller
             'rightSideComponent' => $rightSideComponent
         ]);
     }
+
+    public function download() {
+        $filename = request()->route('filename');
+        $file = $this->file->getByFileName($filename);
+
+        $path = storage_path('app/public') . '/' . $filename;
+        $mimetype = mime_content_type($path);
+        if ($mimetype=='application/pdf') {
+            return response()->file($path, ['Content-Disposition' => 'inline; filename="'.$file->original_filename.'"']);
+        } else { 
+            return response()->download($path, $file->original_filename);
+        }
+    }
+
 }

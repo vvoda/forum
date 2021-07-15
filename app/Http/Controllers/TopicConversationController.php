@@ -8,19 +8,18 @@ use Inertia\Inertia;
 
 class TopicConversationController extends Controller
 {
-    public function store(Request $request): \Inertia\Response
-    {
+    public function store(Request $request): \Inertia\Response {
         $request->validate([
            'message' => 'required|string',
            'topicId' => 'required|integer'
         ]);
 
-        $newTopicConversation = new TopicConversation();
-        $newTopicConversation->message = $request->message;
-        $newTopicConversation->topic_id = $request->topicId;
-        $newTopicConversation->user_id = $request->user()->id;
-        $newTopicConversation->team_id = $request->user()->current_team_id;
-        $newTopicConversation->save();
+        $message = new TopicConversation();
+        $message->message = $request->message;
+        $message->topic_id = $request->topicId;
+        $message->user_id = $request->user()->id;
+        $message->team_id = $request->user()->current_team_id;
+        $message->save();
         return Inertia::render('Home', [
             'currentTopicConversations' => TopicConversation::where([
                 ['team_id', $request->user()->current_team_id],

@@ -4,12 +4,13 @@ namespace App\Repositories\Message;
 
 use App\Models\PrivateMessage;
 use App\Models\TeamMessage;
+use App\Models\TopicConversation;
 
 class MessageRepository implements MessageRepositoryInterface {
 
     protected $pm, $tm;
 
-    public function __construct(PrivateMessage $pm, TeamMessage $tm) {
+    public function __construct(PrivateMessage $pm, TopicConversation $tm) {
         $this->pm = $pm;
         $this->tm = $tm;
     }
@@ -34,8 +35,8 @@ class MessageRepository implements MessageRepositoryInterface {
         return $message;
     }
 
-    public function addTeamMessage($sender, $team, $topic, $message) {
-        $message = new TeamMessage();
+    public function addTopicConversation($sender, $team, $topic, $message) {
+        $message = new TopicConversation();
 
         $message->user_id = $sender;
         $message->team_id = $team;

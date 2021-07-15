@@ -17,7 +17,7 @@ class FileRepository implements FileRepositoryInterface {
         $this->topic_file = $topic_file;
     }
     
-    public function getByFilename($filename) {
+    public function getByFileName($filename) {
         return $this->file->where('filename', $filename)->first();
     }
     

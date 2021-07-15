@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TopicController;
+use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\TopicConversationController;
 
 
@@ -29,9 +29,11 @@ Route::get('/token', function() {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::post('/topic/post', [TopicController::class, 'store'])->name('topic.store');
+    Route::post('/topic/post', [TopicsController::class, 'store'])->name('topic.store');
     Route::post('/', [TopicConversationController::class, 'store'])->name('conversation.store');
+    Route::post('/topic/file', [TopicsController::class, 'storeTopicFileConversation'])->name('conversation.store.file');
     Route::get('/users', [HomeController::class, 'searchUser'])->name('search.user');
+    Route::get('/download/{filename}', [HomeController::class, 'download'])->name('download');
 });
 
 
