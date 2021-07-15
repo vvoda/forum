@@ -2,6 +2,12 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TopicController;
+use App\Http\Controllers\TopicConversationController;
+
+
 use Inertia\Inertia;
 
 /*
@@ -15,14 +21,20 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::get('/token', function() {
+    return csrf_token();
 });
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::post('/topic/post', [TopicController::class, 'store'])->name('topic.store');
+    Route::post('/', [TopicConversationController::class, 'store'])->name('conversation.store');
+    Route::get('/users', [HomeController::class, 'searchUser'])->name('search.user');
+});
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

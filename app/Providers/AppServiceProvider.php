@@ -5,22 +5,19 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
-class AppServiceProvider extends ServiceProvider {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register() {
-        //
-    }
+
+class AppServiceProvider extends ServiceProvider
+{
+
 
     /**
      * Bootstrap any application services.
      *
      * @return void
      */
-    public function boot() {
+
+    public function boot()
+    {
         Schema::defaultStringLength(191); //fix migration errors (keys too long)
         // $this->app->bind('App\Repositories\\RepositoryInterface', 'App\Repositories\\Repository');
         $this->app->bind('App\Repositories\Message\MessageRepositoryInterface', 'App\Repositories\Message\MessageRepository');

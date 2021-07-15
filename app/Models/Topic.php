@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Topic extends Model {
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function createdBy(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     public function team() {
@@ -23,3 +27,4 @@ class Topic extends Model {
     }
 
 }
+
