@@ -1,4 +1,5 @@
 <template>
+
 <!--    <jet-authentication-card>-->
 <!--        <template #logo>-->
 <!--            <jet-authentication-card-logo />-->
@@ -73,6 +74,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
