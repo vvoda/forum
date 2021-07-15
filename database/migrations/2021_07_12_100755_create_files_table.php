@@ -19,6 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('original_filename');
             $table->integer('size');
             $table->string('extension');
+            $table->boolean('starred')->default(0);
             $table->timestamps();
         });
     }

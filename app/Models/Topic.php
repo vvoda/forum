@@ -14,10 +14,6 @@ class Topic extends Model {
         return $this->belongsTo(Team::class);
     }
 
-    public function topic() {
-        return $this->belongsTo(Topic::class);
-    }
-
     public function messages() {
         return $this->hasMany(TeamMessage::class, 'topic_id', 'id');
     }

@@ -7,7 +7,7 @@ interface TopicRepositoryInterface {
     public function getTopics($team_id);
     public function createTopic($request);
     public function updateTopic($request);
-    public function deleteTopic($request);
+    public function deleteTopic($topic_id);
     public function createTopicFile($file_id, $topic_id);
-    public function deleteTopicFile($file_id, $topic_id);
+    public function deleteTopicFile($topic_file_id);
 }

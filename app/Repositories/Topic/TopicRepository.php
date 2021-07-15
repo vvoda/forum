@@ -6,6 +6,7 @@ use App\Models\Team;
 use App\Models\Topic;
 use App\Models\TopicFile;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class TopicRepository implements TopicRepositoryInterface {
     
@@ -59,14 +60,21 @@ class TopicRepository implements TopicRepositoryInterface {
         return $topic;
     }
 
-    public function deleteTopic($request) {
-        $topic = $this->topic->find($request->topic_id);
+    public function deleteTopic($topic_id, $delete_files = false) {
+        $topic = $this->topic->find($topic_id);
         if(!$topic) {
             return false;
         }
         if (count($topic->messages)) {
             foreach($topic->messages as $message) {
                 $message->delete();
+            }
+        }
+
+        if (count($topic->files) && $delete_files) {
+            foreach($topic->files as $topic_file) {
+                Storage::disk('public')->delete($topic_file->file->filename);
+                $topic_file->delete();
             }
         }
 
@@ -84,12 +92,13 @@ class TopicRepository implements TopicRepositoryInterface {
         
     }
 
-    public function deleteTopicFile($file_id, $topic_id) {
-        $topic_file = $this->topic_file->where('file_id', $file_id)->where('topic_id', $topic_id)->first();
+    public function deleteTopicFile($topic_file_id) { // tested, works
+        $topic_file = $this->topic_file->find($topic_file_id);
         if (!$topic_file) {
             return false;
         }
 
+        Storage::disk('public')->delete($topic_file->file->filename);
         $topic_file->file->delete();
         $topic_file->delete();
         
