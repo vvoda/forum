@@ -19514,14 +19514,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     JetApplicationLogo: _Jetstream_ApplicationLogo__WEBPACK_IMPORTED_MODULE_0__.default
-  },
-  data: function data() {
-    return {
-      csrfToken: null
-    };
-  },
-  created: function created() {
-    this.csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   }
 });
 
@@ -22212,22 +22204,17 @@ var _hoisted_1 = {
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "mt-8 text-2xl"
-}, " Testing app: ", -1
+}, " Welcome to your Jetstream application! ", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "mt-6 text-gray-500"
-};
-var _hoisted_4 = {
-  action: "/test-post",
-  method: "POST",
-  enctype: "multipart/form-data"
-};
+}, " Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel ecosystem to be a breath of fresh air. We hope you love it. ", -1
+/* HOISTED */
+);
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<input type=\"hidden\" name=\"topic_id\" value=\"1\"><div class=\"form-group\"><input type=\"file\" class=\"form-control\" name=\"file\"></div><div class=\"form-group\"><input type=\"submit\" class=\"btn btn-success\" value=\"Submit\"></div>", 3);
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "p-6"
@@ -22354,13 +22341,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_application_logo, {
     "class": "block h-12 w-auto"
-  })]), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    type: "hidden",
-    value: $data.csrfToken,
-    name: "_token"
-  }, null, 8
-  /* PROPS */
-  , ["value"]), _hoisted_5])])]), _hoisted_8]);
+  })]), _hoisted_2, _hoisted_3]), _hoisted_4]);
 }
 
 /***/ }),
