@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CmsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,9 @@ Route::get('/token', function() {
     return csrf_token();
 });
 
+Route::get('/register', function() {
 
+})->middleware('auth:sanctum' ,'admin');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -36,6 +39,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/download/{filename}', [HomeController::class, 'download'])->name('download');
 });
 
+Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function() {
+    Route::get('/cms', [CmsController::class, 'dashboard'])->name('cms.dashboard');
+    Route::get('/cms/register', [CmsController::class, 'create'])->name('cms.create');
+    Route::post('/cms/register', [CmsController::class, 'register'])->name('cms.register');
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

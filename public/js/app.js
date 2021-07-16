@@ -18439,7 +18439,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     changeCurrentLeftSide: Function,
     rightSideComponent: String,
-    findUsers: Array
+    findUsers: Array,
+    groupFiles: Array
   },
   data: function data() {
     return {

@@ -12,4 +12,6 @@ interface TopicRepositoryInterface {
     public function deleteTopic($topic_id);
     public function createTopicFile($file_id, $topic_id);
     public function deleteTopicFile($topic_file_id);
+    public function starMessage($message_id);
+    public function getTopicTeamFiles($team_id);
 }

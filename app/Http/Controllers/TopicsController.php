@@ -78,4 +78,8 @@ class TopicsController extends Controller {
         return $files;
     }
 
+    public function starMessage(Request $request) { // star a message with $id, returns modified $message
+        return $this->topic->starMessage($request->message_id);
+    }
+
 }

@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\Topic;
+use App\Models\TopicFile;
 use App\Models\User;
 use App\Repositories\File\FileRepositoryInterface;
+use App\Repositories\Topic\TopicRepositoryInterface;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller {
 
-    protected $file;
+    protected $file, $topic;
 
-    public function __construct() {
-        $this->file = app()->make(FileRepositoryInterface::class);
+    public function __construct(FileRepositoryInterface $file, TopicRepositoryInterface $topic) {
+        $this->file = $file;
+        $this->topic = $topic;
     }
 
     public function index(Request $request): \Inertia\Response {
@@ -50,7 +53,8 @@ class HomeController extends Controller {
             'currentTopicConversations' => $response,
             'middleSection' => $request->topicId ? 'topic-conversations' : 'topics',
             'findUsers' => $findUsers,
-            'rightSideComponent' => $rightSideComponent
+            'rightSideComponent' => $rightSideComponent,
+            'groupFiles' => $this->topic->getTopicTeamFiles($request->user()->current_team_id)
         ]);
     }
 

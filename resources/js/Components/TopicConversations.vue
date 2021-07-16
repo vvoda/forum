@@ -18,7 +18,6 @@
                         </div>
                         <div v-else>
                             {{ message.message }}
-                            
                         </div>
                     </div>
                 </li>

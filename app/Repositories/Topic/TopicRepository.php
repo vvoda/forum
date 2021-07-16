@@ -13,13 +13,14 @@ use Inertia\Inertia;
 
 class TopicRepository implements TopicRepositoryInterface {
     
-    protected $topic, $team, $topic_file, $fileRepository;
+    protected $topic, $team, $topic_file, $fileRepository, $message;
 
-    public function __construct(Topic $topic, Team $team, TopicFile $topic_file) {
+    public function __construct(Topic $topic, Team $team, TopicFile $topic_file, TopicConversation $message) {
         $this->topic = $topic;
         $this->team = $team;
         $this->topic_file = $topic_file;
         $this->fileRepository = app()->make(FileRepositoryInterface::class);
+        $this->message = $message;
     }
 
     public function getTopic($id) {
@@ -154,6 +155,27 @@ class TopicRepository implements TopicRepositoryInterface {
         $topic_file->delete();
         
         return true;
+    }
+
+    public function starMessage($message_id) {
+        $message = $this->message->find($message_id);
+        $message->starred = 1;
+        $message->save();
+
+        return $message;
+    }
+
+    public function getTopicTeamFiles($team_id) {
+        $topic = $this->topic->where('team_id', $team_id)->first();
+        $files = [];
+
+        if(count($topic->files)) {
+            foreach($topic->files as $topicfile) {
+                $files[] = $topicfile->file;
+            }
+        }
+
+        return $files;
     }
 
 }

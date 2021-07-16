@@ -136,7 +136,8 @@ export default {
     props: {
         changeCurrentLeftSide: Function,
         rightSideComponent: String,
-        findUsers: Array
+        findUsers: Array,
+        groupFiles: Array
     },
     data() {
         return {
