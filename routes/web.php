@@ -43,6 +43,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function() {
     Route::get('/cms', [CmsController::class, 'dashboard'])->name('cms.dashboard');
     Route::get('/cms/register', [CmsController::class, 'create'])->name('cms.create');
     Route::post('/cms/register', [CmsController::class, 'register'])->name('cms.register');
+    Route::get('/cms/search', [CmsController::class, 'search'])->name('cms.search');
 });
 
 

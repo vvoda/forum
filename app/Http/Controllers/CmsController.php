@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class CmsController extends Controller {
 
     protected $user;
+    protected $data = [];
     
     public function __construct(User $user) {
         $this->user = $user;
@@ -37,8 +38,10 @@ class CmsController extends Controller {
         } else {
             $users = [];
         }
+        $this->data['users'] = $users;
+        $this->data['searchTerm'] = $request->search;
 
-        return view('cms.search-results')->with($users);
+        return view('cms.search-results', $this->data);
     }
 
 }
