@@ -166,10 +166,14 @@ class TopicRepository implements TopicRepositoryInterface {
     }
 
     public function getTopicTeamFiles($team_id) {
-        $topic = $this->topic->where('team_id', $team_id)->first();
+        $topic = $this->topic->where('team_id', $team_id)->with('files')->first();
         $files = [];
-
-        if(count($topic->files)) {
+        if(!$topic) {
+            return $files;
+        }
+        
+        
+        if(!is_null($topic->files)) {
             foreach($topic->files as $topicfile) {
                 $files[] = $topicfile->file;
             }
