@@ -28987,7 +28987,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.addContact[data-v-2d0e514a] {\n        top: 0;\n        left: 0;\n        height: 100%;\n        transition: transform .7s;\n}\n.slideOut[data-v-2d0e514a] {\n        transform: translateX(-100%);\n}\n.slideIn[data-v-2d0e514a] {\n        transform: translateX(0);\n}\n.contrast[data-v-2d0e514a] {\n        filter: grayscale(1) invert(1);\n}\n.contactList[data-v-2d0e514a] {\n        height: 95vh;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.addContact[data-v-2d0e514a] {\r\n        top: 0;\r\n        left: 0;\r\n        height: 100%;\r\n        transition: transform .7s;\n}\n.slideOut[data-v-2d0e514a] {\r\n        transform: translateX(-100%);\n}\n.slideIn[data-v-2d0e514a] {\r\n        transform: translateX(0);\n}\n.contrast[data-v-2d0e514a] {\r\n        filter: grayscale(1) invert(1);\n}\n.contactList[data-v-2d0e514a] {\r\n        height: 95vh;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29011,7 +29011,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.addGroup[data-v-735f58a9] {\n        top: 0;\n        left: 0;\n        height: 100%;\n        transition: transform .7s;\n}\n.slideOut[data-v-735f58a9] {\n        transform: translateX(-100%);\n}\n.slideIn[data-v-735f58a9] {\n        transform: translateX(0);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.addGroup[data-v-735f58a9] {\r\n        top: 0;\r\n        left: 0;\r\n        height: 100%;\r\n        transition: transform .7s;\n}\n.slideOut[data-v-735f58a9] {\r\n        transform: translateX(-100%);\n}\n.slideIn[data-v-735f58a9] {\r\n        transform: translateX(0);\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29035,7 +29035,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.contrast[data-v-2b3a3880] {\n    filter: grayscale(1) invert(1);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.contrast[data-v-2b3a3880] {\r\n    filter: grayscale(1) invert(1);\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29059,7 +29059,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.search-input[data-v-823aae3a] {\n        background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' d='M18.109,17.776l-3.082-3.081c-0.059-0.059-0.135-0.077-0.211-0.087c1.373-1.38,2.221-3.28,2.221-5.379c0-4.212-3.414-7.626-7.625-7.626c-4.212,0-7.626,3.414-7.626,7.626s3.414,7.627,7.626,7.627c1.918,0,3.665-0.713,5.004-1.882c0.006,0.085,0.033,0.17,0.098,0.234l3.082,3.081c0.143,0.142,0.371,0.142,0.514,0C18.25,18.148,18.25,17.918,18.109,17.776zM9.412,16.13c-3.811,0-6.9-3.089-6.9-6.9c0-3.81,3.089-6.899,6.9-6.899c3.811,0,6.901,3.09,6.901,6.899C16.312,13.041,13.223,16.13,9.412,16.13z'/%3e%3c/svg%3e\");\n        background-repeat: no-repeat;\n        background-position: left 0.75rem center;\n        background-size: 0.9rem 1.25rem;\n}\n.contrast[data-v-823aae3a] {\n        filter: grayscale(1) invert(1);\n}\n.groupList[data-v-823aae3a] {\n        height: 90vh;\n}\n.groupList[data-v-823aae3a]::-webkit-scrollbar {\n        width: 6px;               /* width of the entire scrollbar */\n}\n.groupList[data-v-823aae3a]::-webkit-scrollbar-track {\n        background: lightgrey;        /* color of the tracking area */\n}\n.groupList[data-v-823aae3a]::-webkit-scrollbar-thumb {\n        background-color: gray;    /* color of the scroll thumb */\n        border-radius: 10px;       /* roundness of the scroll thumb */ /* creates padding around scroll thumb */\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.search-input[data-v-823aae3a] {\r\n        background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' d='M18.109,17.776l-3.082-3.081c-0.059-0.059-0.135-0.077-0.211-0.087c1.373-1.38,2.221-3.28,2.221-5.379c0-4.212-3.414-7.626-7.625-7.626c-4.212,0-7.626,3.414-7.626,7.626s3.414,7.627,7.626,7.627c1.918,0,3.665-0.713,5.004-1.882c0.006,0.085,0.033,0.17,0.098,0.234l3.082,3.081c0.143,0.142,0.371,0.142,0.514,0C18.25,18.148,18.25,17.918,18.109,17.776zM9.412,16.13c-3.811,0-6.9-3.089-6.9-6.9c0-3.81,3.089-6.899,6.9-6.899c3.811,0,6.901,3.09,6.901,6.899C16.312,13.041,13.223,16.13,9.412,16.13z'/%3e%3c/svg%3e\");\r\n        background-repeat: no-repeat;\r\n        background-position: left 0.75rem center;\r\n        background-size: 0.9rem 1.25rem;\n}\n.contrast[data-v-823aae3a] {\r\n        filter: grayscale(1) invert(1);\n}\n.groupList[data-v-823aae3a] {\r\n        height: 90vh;\n}\n.groupList[data-v-823aae3a]::-webkit-scrollbar {\r\n        width: 6px;               /* width of the entire scrollbar */\n}\n.groupList[data-v-823aae3a]::-webkit-scrollbar-track {\r\n        background: lightgrey;        /* color of the tracking area */\n}\n.groupList[data-v-823aae3a]::-webkit-scrollbar-thumb {\r\n        background-color: gray;    /* color of the scroll thumb */\r\n        border-radius: 10px;       /* roundness of the scroll thumb */ /* creates padding around scroll thumb */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29083,7 +29083,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.contrast[data-v-ef412ed2] {\n        filter: grayscale(1) invert(1);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.contrast[data-v-ef412ed2] {\r\n        filter: grayscale(1) invert(1);\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29107,7 +29107,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.customScroll[data-v-36132355]::-webkit-scrollbar {\n        width: 6px;               /* width of the entire scrollbar */\n}\n.customScroll[data-v-36132355]::-webkit-scrollbar-track {\n        background: lightgrey;        /* color of the tracking area */\n}\n.customScroll[data-v-36132355]::-webkit-scrollbar-thumb {\n        background-color: gray;    /* color of the scroll thumb */\n        border-radius: 10px;       /* roundness of the scroll thumb */ /* creates padding around scroll thumb */\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.customScroll[data-v-36132355]::-webkit-scrollbar {\r\n        width: 6px;               /* width of the entire scrollbar */\n}\n.customScroll[data-v-36132355]::-webkit-scrollbar-track {\r\n        background: lightgrey;        /* color of the tracking area */\n}\n.customScroll[data-v-36132355]::-webkit-scrollbar-thumb {\r\n        background-color: gray;    /* color of the scroll thumb */\r\n        border-radius: 10px;       /* roundness of the scroll thumb */ /* creates padding around scroll thumb */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29131,7 +29131,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.contrast[data-v-115d62ae] {\n        filter: grayscale(1) invert(1);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.contrast[data-v-115d62ae] {\r\n        filter: grayscale(1) invert(1);\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29203,7 +29203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nsection[data-v-6a63e488] {\n        height: 100vh;\n        max-height: 100vh;\n}\n.rightSlideIn[data-v-6a63e488] {\n        transform: translateX(0);\n        transition: .5s;\n}\n.rightSlideOut[data-v-6a63e488] {\n        transform: translateX(100%);\n        width: 0;\n        opacity: .5;\n        transition: .5s;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nsection[data-v-6a63e488] {\r\n        height: 100vh;\r\n        max-height: 100vh;\n}\n.rightSlideIn[data-v-6a63e488] {\r\n        transform: translateX(0);\r\n        transition: .5s;\n}\n.rightSlideOut[data-v-6a63e488] {\r\n        transform: translateX(100%);\r\n        width: 0;\r\n        opacity: .5;\r\n        transition: .5s;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
