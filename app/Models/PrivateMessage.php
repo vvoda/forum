@@ -8,12 +8,16 @@ class PrivateMessage extends Model {
 
     protected $fillable = ['message'];
 
-    public function sender() {
+    public function channel() {
+        return $this->belongsTo(PrivateChannel::class, 'channel_id', 'id');
+    }
+
+    public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function receiver() {
-        return $this->belongsTo(User::class, 'receiver_id', 'id');
+    public function file() {
+        return $this->belongsTo(File::class);
     }
 
 }

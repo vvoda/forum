@@ -3,24 +3,17 @@
 namespace App\Repositories\Message;
 
 use App\Models\PrivateMessage;
-use App\Models\TeamMessage;
-use App\Models\TopicConversation;
+use App\Models\PrivateChannel;
+use App\Models\SentFile;
 
 class MessageRepository implements MessageRepositoryInterface {
 
-    protected $pm, $tm;
+    protected $pm, $channel, $sent_file;
 
-    public function __construct(PrivateMessage $pm, TopicConversation $tm) {
+    public function __construct(PrivateMessage $pm, PrivateChannel $channel, SentFile $sent_file) {
         $this->pm = $pm;
-        $this->tm = $tm;
-    }
-
-    public function getPrivateMessage($id) {
-        return $this->pm->find($id);
-    }
-
-    public function getTeamMessage($id) {
-        return $this->tm->find($id);
+        $this->channel = $channel;
+        $this->sent_file = $sent_file;
     }
 
     public function addPrivateMessage($sender, $receiver, $message) {
@@ -35,47 +28,28 @@ class MessageRepository implements MessageRepositoryInterface {
         return $message;
     }
 
-    public function addTopicConversation($sender, $team, $topic, $message) {
-        $message = new TopicConversation();
+    public function sendPrivateFile($file_id, $channel_id) {
+        $sentFile = new SentFile();
+        
+        $sentFile->file_id = $file_id;
+        $sentFile->channel_id = $channel_id;
 
-        $message->user_id = $sender;
-        $message->team_id = $team;
-        $message->topic_id = $topic;
-        $message->message = $message;
+        $sentFile->save();
 
-        $message->save();
-
-        return $message();
+        return $sentFile;
     }
 
-    public function deletePrivateMessage($id) {
-        $message = $this->pm->find($id);
-        $message->delete();
+    public function starChannelMessage($channel_id, $file_id) {
+        $sentFile = $this->sent_file->where('channel_id', $channel_id)->where('file_id', $file_id)->first();
+
+        if(!$sentFile) {
+            return false;
+        }
+
+        $sentFile->starred = 1;
+        $sentFile->save();
 
         return true;
-    }
-
-    public function deleteTeamMessage($id) {
-        $message = $this->tm->find($id);
-        $message->delete();
-
-        return true;
-    }
-
-    public function unsendPrivateMessage($id) {
-        $message = $this->getPrivateMessage($id);
-        $message->message = 'This message was removed.';
-        $message->save();
-
-        return $message;
-    }
-
-    public function unsendTeamMessage($id) {
-        $message = $this->getTeamMessage($id);
-        $message->message = 'This message was removed.';
-        $message->save();
-
-        return $message;
     }
     
 }

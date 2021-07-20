@@ -61,10 +61,6 @@ class TopicsController extends Controller {
         return $this->topic->updateTopic($request);
     }
 
-    public function sendTeamMessage(Request $request) {
-        return $this->message->addTopicConversation($request->user()->id, $request->team_id, $request->topic_id, $request->message);
-    }
-
     public function getTopicFiles(Request $request) {
         $topic = $this->topic->getTopic($request->topic_id);
         $files = [];

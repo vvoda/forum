@@ -12,7 +12,7 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 
-class User extends Authenticatable //implements MustVerifyEmail
+class User extends Authenticatable //implements MustVerifyEmail 
 {
     use HasApiTokens;
     use HasFactory;
@@ -60,4 +60,21 @@ class User extends Authenticatable //implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function teams() {
+        return $this->hasMany(Team::class, 'user_id', 'id');
+    }
+
+    public function messages() {
+        return $this->hasMany(TopicConversation::class, 'user_id', 'id');
+    }
+
+    public function files() {
+        return $this->hasMany(File::class, 'user_id', 'id');
+    }
+
+    public function contacts() {
+        return $this->hasMany(Contact::class, 'user_id', 'id');
+    }
+
 }

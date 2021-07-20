@@ -4,9 +4,6 @@ namespace App\Repositories\Message;
 
 interface MessageRepositoryInterface {
     public function addPrivateMessage($sender, $receiver, $message);
-    public function addTopicConversation($sender, $team, $topic, $message);
-    public function getPrivateMessage($id);
-    public function getTeamMessage($id);
-    public function unsendPrivateMessage($id);
-    public function unsendTeamMessage($id);
+    public function sendPrivateFile($file_id, $channel_id);
+    public function starChannelMessage($channel_id, $file_id);
 }   

@@ -31,16 +31,12 @@ class UsersController extends Controller {
         
     }
 
-    public function unsendPrivateMessage($message_id) {
-        return $this->message->unsendPrivateMessage($message_id);
-    }
-
     public function getFavouriteFiles(Request $request) {
         return $this->file->getFavouriteFiles($request->user()->id);
     }
 
     public function getTeamFavouriteFiles(Request $request) {
-        return $this->file->getTeamFavouriteFiles(1);
+        return $this->file->getTeamFavouriteFiles($request->user()->current_team_id);
     }
 
 }

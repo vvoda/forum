@@ -6,6 +6,7 @@ namespace App\Repositories\User;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Jenssegers\Agent\Agent;
 
 class UserRepository implements UserRepositoryInterface {
@@ -57,6 +58,31 @@ class UserRepository implements UserRepositoryInterface {
 
     public function onlineUsers() {
         return $this->getOnlineUsers();
+    }
+
+    public function deleteUser($id, $recursive = false) {
+        $user = $this->user->find($id);
+        if(!$user) { return false; }
+
+        if($recursive) {
+            foreach ($user->messages as $message) {
+                if($message->file) {
+                    Storage::disk('files')->delete($message->file->filename);
+                    $message->file->delete();
+                    $message->delete();
+                } else {
+                    $message->delete();
+                }
+            }
+
+            foreach ($user->files as $file) {
+                Storage::disk('files')->delete($file->filename);
+                $file->delete();
+            }
+
+        }
+
+
     }
 
 }

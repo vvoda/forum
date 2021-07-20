@@ -15,8 +15,9 @@ class CreateSentFilesTable extends Migration
     {
         Schema::create('sent_files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('file_id');
-            $table->foreignId('receiver_id');
+            $table->foreignId('file_id')->index()->unsigned();
+            $table->foreignId('channel_id')->index()->unsigned();
+            $table->boolean('starred');
             $table->timestamps();
         });
     }

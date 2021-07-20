@@ -15,9 +15,11 @@ class CreatePrivateMessagesTable extends Migration
     {
         Schema::create('private_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('receiver_id');
+            $table->foreignId('channel_id')->index();
+            $table->foreignId('user_id')->index();
+            $table->foreignId('file_id')->index()->nullable();
             $table->longText('message');
+            $table->boolean('starred');
             $table->timestamps();
         });
     }
